@@ -1,0 +1,70 @@
+---
+title: 首頁
+layout: ./app/layout.ejs
+engine: ejs
+current: index
+---
+
+<section class="addinput">
+  <div class="hero">
+    <img src="./assets/images/main_img.png" alt="main_img">
+    <img src="./assets/images/logo.png" alt="logo" class="padnone">
+  </div>
+  <form class="addform">
+    <h1 class="title">
+      <span class="material-symbols-outlined">add_circle</span>
+      新增旅遊套票
+    </h1>
+    <div class="formitem">
+      <label for="name">套票名稱</label>
+      <input name="name" id="fname" type="text" placeholder="請填寫套票名稱">
+    </div>
+    <div class="formitem">
+      <label for="imgurl">圖片網址</label>
+      <input name="imgurl" id="imgurl" type="url" placeholder="請填寫圖片網址">
+    </div>
+    <div class="formitem">
+      <label for="country">景點地區</label>
+      <select class="country">
+        <option value="" disabled selected hidden>請選擇景點地區</option>
+        <option value="台北">台北</option>
+        <option value="台中">台中</option>
+        <option value="高雄">高雄</option>
+      </select>
+    </div>
+    <div class="formitem">
+      <label for="price">套票金額</label>
+      <input name="price" id="price" type="number" min="1"  placeholder="請填寫套票金額">
+    </div>
+    <div class="formitem">
+      <label for="count">套票組數</label>
+      <input name="count" id="count" type="number"  min="1" placeholder="請填寫套票組數">
+    </div>
+    <div class="formitem">
+      <label for="star">套票星級</label>
+      <input name="star" id="star" type="number" min="1" max="10" placeholder="請填寫套票星級">
+    </div>
+    <div class="formitem top">
+      <label for="memo">套票描述</label>
+      <textarea id="memo" name="memo"cols="30" rows="5" placeholder="請填寫套票描述"></textarea>
+    </div>
+    <div class="formitem">
+      <label for="submit"><input type="submit" value="新增套票" class="btn"></label>
+    </div>
+  </form>
+</section>
+<section class="output">
+  <div class="container">
+    <div class="search-area">
+      <select class="filter">
+        <option value="全部地區" selected>全部地區</option>
+        <option value="台北">台北</option>
+        <option value="台中">台中</option>
+        <option value="高雄">高雄</option>
+      </select>
+      <p class="search-result">本次搜尋共 6 筆資料</p>
+    </div>
+    <ul class="result-list">
+    </ul>
+  </div> 
+</section>

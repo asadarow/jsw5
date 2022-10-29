@@ -1,0 +1,174 @@
+.addinput{
+    max-width: 920px;
+    margin: 120px auto 100px auto;
+    padding: 60px 95px;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0px 2px 6px $color_shadow;
+    @include PAD{
+        max-width: 720px;
+        box-shadow:none;
+        margin: 0 auto;
+    }
+    @include MB{
+        max-width: 500px;
+        padding: 60px 45px;
+    }
+}
+.padnone{
+    @include PAD{
+        display: none;
+    }
+}
+.container{
+    max-width: 1110px;
+    margin: 0 auto;
+    padding-top: 56px;
+    padding-left: 15px;
+    padding-right: 15px;
+    @include PAD{
+        max-width: 720px;
+    }
+    @include MB{
+        max-width: 375px;
+    }    
+}
+.hero,.addform{
+    width: 50%;
+    @include PAD{
+        width: 100%;
+    }
+    @include MB{
+        width: 100%;
+    }  
+}
+.formitem{
+    margin-bottom: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    &:last-child{
+        justify-content: end;
+        @include MB{
+            justify-content: center;
+        }  
+    }
+}
+.top label{
+    vertical-align: top;
+}
+.title{
+    color: $color_primary;
+    border-bottom: 3px solid $color_primary;
+    margin-bottom: 32px;
+}
+input,select,option,textarea{
+    background: $color_tbgray;
+    width: 255px;
+    border: none;
+    padding: 8px 12px;
+    border-bottom: 1px solid $color_primary;
+    @include MB{
+        width: 100%;
+    }  
+}
+
+.btn{
+    background: $color_primary;
+    color: $color_white;
+    font-size: 20px;
+    padding: 10px 40px;
+    cursor: pointer;
+    width: initial;
+    height: initial;
+    border-radius: 5px;
+    &:hover{
+        background: $color_secondary;
+    }
+  
+}
+.output{
+    background: $color_bggray;
+}
+.search-area{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 920px;
+    margin: 0 auto;
+    margin-bottom: 52px;
+    select{
+        background: $color_white;
+        border: 1px solid #CED4DA;
+        border-radius: 4px;
+        margin-right: 30px;
+    }
+    p{
+        color:$color_txgray;
+    }
+}
+.result-list{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    width: calc(100% /3 - 30px);
+    box-shadow: 0px 2px 6px $color_shadow;
+    margin-bottom: 38px;
+    @include PAD{
+        width: calc(50% - 15px);
+    }
+    @include MB{
+        width: 100%;
+    }
+}
+.cover{
+    position: relative;
+    p{
+        position: absolute;
+    }
+}
+.area{
+    background: $color_secondary;
+    color: $color_white;
+    font-size: 20px;
+    padding: 8px 20px;
+    top: -12px;
+}
+.score{
+    background: $color_primary;
+    color: $color_white;
+    font-size: 16px; 
+    padding: 5px 8px;
+    bottom: -16px;   
+}
+.purchase{
+    color: $color_primary;
+    font-weight: $medium;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    span{
+        font-size: 16px;
+        vertical-align:middle;
+    }
+}
+
+.depiction{
+    // height: 166px;
+    h2{
+        color: $color_primary;
+        border-bottom: 2px solid $color_primary;
+        margin-bottom: 16px;
+    }
+    p{
+        color:$color_txgray;
+    }
+}
+.content{
+    padding: 20px;
+}
