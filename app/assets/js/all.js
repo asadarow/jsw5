@@ -31,15 +31,18 @@ let data = [
   }
 ];
 const list=document.querySelector(".result-list");
+const result=document.querySelector(".search-result");
+let resultlength=0;
 // 搜尋結果
 function init(){
   let str="";
+  let resultstr="";
   data.forEach(function(item){
     str+=`<li class="card">
     <div class="cover">
       <p class="area">${item.area}</p>
       <p class="score">${item.rate}</p>
-      <img src=${item.imgUrl} alt="#">
+      <a href="#"><img src=${item.imgUrl} alt="#"></a>
     </div>
     <div class="content">
       <div class="depiction">
@@ -58,18 +61,26 @@ function init(){
     </li>`;
     list.innerHTML = str;
   });
+  resultlength=data.length;
+  resultstr+=`本次搜尋共 ${resultlength} 筆資料`
+  result.innerHTML = resultstr;
+  return resultstr;
 };
+init()
 // 篩選條件
 const filter=document.querySelector(".filter");
+
 filter.addEventListener("click",function(e){
   let str ="";
+  let resultstr="";
+  resultlength=0;
   data.forEach(function(item){
     if(e.target.value=="全部地區"){
       str+=`<li class="card">
     <div class="cover">
       <p class="area">${item.area}</p>
       <p class="score">${item.rate}</p>
-      <img src=${item.imgUrl} alt="#">
+      <a href="#"><img src=${item.imgUrl} alt="#"></a>
     </div>
     <div class="content">
       <div class="depiction">
@@ -86,12 +97,13 @@ filter.addEventListener("click",function(e){
       </div>
     </div>
     </li>`;
+    resultlength=data.length;
     }else if(e.target.value==item.area){
       str+=`<li class="card">
       <div class="cover">
         <p class="area">${item.area}</p>
         <p class="score">${item.rate}</p>
-        <img src=${item.imgUrl} alt="#">
+        <a href="#"><img src=${item.imgUrl} alt="#"></a>
       </div>
       <div class="content">
         <div class="depiction">
@@ -108,9 +120,12 @@ filter.addEventListener("click",function(e){
         </div>
       </div>
       </li>`;
+      resultlength++;
     }
     list.innerHTML = str;
   })
+  resultstr+=`本次搜尋共 ${resultlength} 筆資料`
+  result.innerHTML = resultstr;
 })
 // 新增資料
 const btn = document.querySelector(".btn");
@@ -131,14 +146,18 @@ btn.addEventListener("click",function(e){
   obj.price=price.value;
   obj.rate=star.value;
   data.push(obj);
+  resultlength++;
+  alert("新增成功!");
   init();
-  // fname.value="";
-  // imgurl.value="";
-  // area.value="";
-  // memo.value="";
-  // count.value="";
-  // price.value="";
-  // star.value="";
+  console.log(data);
+  fname.value="";
+  imgurl.value="";
+  area.value="";
+  memo.value="";
+  count.value="";
+  price.value="";
+  star.value="";
+  filter.value="全部地區";
 })
 
 

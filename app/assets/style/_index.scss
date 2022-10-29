@@ -109,7 +109,7 @@ input,select,option,textarea{
 }
 .result-list{
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     flex-wrap: wrap;
     gap: 30px;
 }
@@ -131,6 +131,15 @@ input,select,option,textarea{
     p{
         position: absolute;
     }
+    img{
+        transition-duration: 0.5s;
+        &:hover{
+            transform: scale(1.15);
+        }
+    }
+    a{
+        overflow:hidden;
+    }
 }
 .area{
     background: $color_secondary;
@@ -138,13 +147,15 @@ input,select,option,textarea{
     font-size: 20px;
     padding: 8px 20px;
     top: -12px;
+    z-index: 1;
 }
 .score{
     background: $color_primary;
     color: $color_white;
     font-size: 16px; 
     padding: 5px 8px;
-    bottom: -16px;   
+    bottom: -16px;
+    z-index: 1;   
 }
 .purchase{
     color: $color_primary;
