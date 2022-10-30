@@ -206,9 +206,6 @@ input, select, option, textarea {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 30px; }
@@ -221,7 +218,7 @@ input, select, option, textarea {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: calc(100% /3 - 30px);
+  width: calc(100% /3 - 20px);
   -webkit-box-shadow: 0px 2px 6px #DEE2E6;
           box-shadow: 0px 2px 6px #DEE2E6;
   margin-bottom: 38px; }
@@ -236,20 +233,32 @@ input, select, option, textarea {
   position: relative; }
   .cover p {
     position: absolute; }
+  .cover img {
+    -webkit-transition-duration: 0.5s;
+         -o-transition-duration: 0.5s;
+            transition-duration: 0.5s; }
+    .cover img:hover {
+      -webkit-transform: scale(1.15);
+          -ms-transform: scale(1.15);
+              transform: scale(1.15); }
+  .cover a {
+    overflow: hidden; }
 
 .area {
   background: #64C3BF;
   color: #fff;
   font-size: 20px;
   padding: 8px 20px;
-  top: -12px; }
+  top: -12px;
+  z-index: 1; }
 
 .score {
   background: #00807E;
   color: #fff;
   font-size: 16px;
   padding: 5px 8px;
-  bottom: -16px; }
+  bottom: -16px;
+  z-index: 1; }
 
 .purchase {
   color: #00807E;
@@ -267,13 +276,14 @@ input, select, option, textarea {
     font-size: 16px;
     vertical-align: middle; }
 
-.depiction h2 {
-  color: #00807E;
-  border-bottom: 2px solid #00807E;
-  margin-bottom: 16px; }
-
-.depiction p {
-  color: #818A91; }
+.depiction {
+  height: 166px; }
+  .depiction h2 {
+    color: #00807E;
+    border-bottom: 2px solid #00807E;
+    margin-bottom: 16px; }
+  .depiction p {
+    color: #818A91; }
 
 .content {
   padding: 20px; }
