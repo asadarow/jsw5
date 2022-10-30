@@ -38,33 +38,12 @@ function init(){
   let str="";
   let resultstr="";
   data.forEach(function(item){
-    str+=`<li class="card">
-    <div class="cover">
-      <p class="area">${item.area}</p>
-      <p class="score">${item.rate}</p>
-      <a href="#"><img src=${item.imgUrl} alt="#"></a>
-    </div>
-    <div class="content">
-      <div class="depiction">
-        <h2>${item.name}</h2>
-        <p>${item.description}</p>
-      </div>
-      <div class="purchase">
-        <p>
-          <span class="material-icons">
-          error
-          </span>
-          剩下最後 ${item.group} 組</p>
-        <h3><span>TWD</span>$${item.price}</h3>
-      </div>
-    </div>
-    </li>`;
+    str+=`<li class="card"><div class="cover"><p class="area">${item.area}</p><p class="score">${item.rate}</p><a href="#"><img src=${item.imgUrl} alt="#"></a></div><div class="content"><div class="depiction"><h2>${item.name}</h2><p>${item.description}</p></div><div class="purchase"><p><span class="material-icons">error</span>剩下最後 ${item.group} 組</p><h3><span>TWD</span>$${item.price}</h3></div></div></li>`;
     list.innerHTML = str;
   });
   resultlength=data.length;
   resultstr+=`本次搜尋共 ${resultlength} 筆資料`
   result.innerHTML = resultstr;
-  return resultstr;
 };
 init()
 // 篩選條件
@@ -76,50 +55,10 @@ filter.addEventListener("click",function(e){
   resultlength=0;
   data.forEach(function(item){
     if(e.target.value=="全部地區"){
-      str+=`<li class="card">
-    <div class="cover">
-      <p class="area">${item.area}</p>
-      <p class="score">${item.rate}</p>
-      <a href="#"><img src=${item.imgUrl} alt="#"></a>
-    </div>
-    <div class="content">
-      <div class="depiction">
-        <h2>${item.name}</h2>
-        <p>${item.description}</p>
-      </div>
-      <div class="purchase">
-        <p>
-          <span class="material-icons">
-          error
-          </span>
-          剩下最後 ${item.group} 組</p>
-        <h3><span>TWD</span>$${item.price}</h3>
-      </div>
-    </div>
-    </li>`;
-    resultlength=data.length;
+      str+=`<li class="card"><div class="cover"><p class="area">${item.area}</p><p class="score">${item.rate}</p><a href="#"><img src=${item.imgUrl} alt="#"></a></div><div class="content"><div class="depiction"><h2>${item.name}</h2><p>${item.description}</p></div><div class="purchase"><p><span class="material-icons">error</span>剩下最後 ${item.group} 組</p><h3><span>TWD</span>$${item.price}</h3></div></div></li>`;
+      resultlength=data.length;
     }else if(e.target.value==item.area){
-      str+=`<li class="card">
-      <div class="cover">
-        <p class="area">${item.area}</p>
-        <p class="score">${item.rate}</p>
-        <a href="#"><img src=${item.imgUrl} alt="#"></a>
-      </div>
-      <div class="content">
-        <div class="depiction">
-          <h2>${item.name}</h2>
-          <p>${item.description}</p>
-        </div>
-        <div class="purchase">
-          <p>
-            <span class="material-icons">
-            error
-            </span>
-            剩下最後 ${item.group} 組</p>
-          <h3><span>TWD</span>$${item.price}</h3>
-        </div>
-      </div>
-      </li>`;
+      str+=`<li class="card"><div class="cover"><p class="area">${item.area}</p><p class="score">${item.rate}</p><a href="#"><img src=${item.imgUrl} alt="#"></a></div><div class="content"><div class="depiction"><h2>${item.name}</h2><p>${item.description}</p></div><div class="purchase"><p><span class="material-icons">error</span>剩下最後 ${item.group} 組</p><h3><span>TWD</span>$${item.price}</h3></div></div></li>`;
       resultlength++;
     }
     list.innerHTML = str;
@@ -137,27 +76,44 @@ const count = document.querySelector("#count");
 const star = document.querySelector("#star");
 const memo = document.querySelector("#memo");
 btn.addEventListener("click",function(e){
-  let obj={};
-  obj.name = fname.value;
-  obj.imgUrl=imgurl.value;
-  obj.area=area.value;
-  obj.description=memo.value;
-  obj.group=count.value;
-  obj.price=price.value;
-  obj.rate=star.value;
-  data.push(obj);
-  resultlength++;
-  alert("新增成功!");
-  init();
-  console.log(data);
-  fname.value="";
-  imgurl.value="";
-  area.value="";
-  memo.value="";
-  count.value="";
-  price.value="";
-  star.value="";
-  filter.value="全部地區";
+  
+  if(fname.value.length<1){
+    alert("請填寫套票名稱");
+  }else if(imgurl.value.length<=1){
+    alert("請填寫圖片網址");
+  }else if(area.value===""){
+    alert("請選擇景點地區");
+  }else if(price.value<1){
+    alert("套票金額請填寫大於1的數字");
+  }else if(count.value<1){
+    alert("套票組數請填寫大於1的數字");
+  }else if(star.value<1|| star.value>10){
+    alert("套票星級請填寫1到10之間的數字");
+  }else if(memo.value.length<1){
+    alert("請填寫套票描述");
+  }else{
+    let obj={};
+    obj.name = fname.value;
+    obj.imgUrl=imgurl.value;
+    obj.area=area.value;
+    obj.description=memo.value;
+    obj.group=count.value;
+    obj.price=price.value;
+    obj.rate=star.value;
+    data.push(obj);
+    resultlength++;
+    alert("新增成功!");
+    init();
+    console.log(data);
+    fname.value="";
+    imgurl.value="";
+    area.value="";
+    memo.value="";
+    count.value="";
+    price.value="";
+    star.value="";
+    filter.value="全部地區";
+  }
 })
 
 

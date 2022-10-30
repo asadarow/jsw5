@@ -116,7 +116,7 @@ input,select,option,textarea{
 .card{
     display: flex;
     flex-direction: column;
-    width: calc(100% /3 - 30px);
+    width: calc(100% /3 - 20px);
     box-shadow: 0px 2px 6px $color_shadow;
     margin-bottom: 38px;
     @include PAD{
@@ -170,7 +170,7 @@ input,select,option,textarea{
 }
 
 .depiction{
-    // height: 166px;
+    height: 166px;
     h2{
         color: $color_primary;
         border-bottom: 2px solid $color_primary;
