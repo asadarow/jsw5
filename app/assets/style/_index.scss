@@ -5,6 +5,7 @@
     display: flex;
     flex-wrap: wrap;
     box-shadow: 0px 2px 6px $color_shadow;
+    border-radius: 12px;
     @include PAD{
         max-width: 720px;
         box-shadow:none;
@@ -119,6 +120,7 @@ input,select,option,textarea{
     width: calc(100% /3 - 20px);
     box-shadow: 0px 2px 6px $color_shadow;
     margin-bottom: 38px;
+    border-radius: 4px;
     @include PAD{
         width: calc(50% - 15px);
     }
@@ -133,6 +135,7 @@ input,select,option,textarea{
     }
     img{
         transition-duration: 0.5s;
+        border-radius: 4px 4px 0px 0px;
         &:hover{
             transform: scale(1.15);
         }
@@ -148,6 +151,7 @@ input,select,option,textarea{
     padding: 8px 20px;
     top: -12px;
     z-index: 1;
+    border-radius: 0px 4px 4px 0px;
 }
 .score{
     background: $color_primary;
@@ -155,7 +159,8 @@ input,select,option,textarea{
     font-size: 16px; 
     padding: 5px 8px;
     bottom: -16px;
-    z-index: 1;   
+    z-index: 1;
+    border-radius: 0px 4px 4px 0px;   
 }
 .purchase{
     color: $color_primary;
