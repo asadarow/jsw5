@@ -91,7 +91,8 @@ h3 {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -webkit-box-shadow: 0px 2px 6px #DEE2E6;
-          box-shadow: 0px 2px 6px #DEE2E6; }
+          box-shadow: 0px 2px 6px #DEE2E6;
+  border-radius: 12px; }
   @media (max-width: 768px) {
     .addinput {
       max-width: 720px;
@@ -221,7 +222,8 @@ input, select, option, textarea {
   width: calc(100% /3 - 20px);
   -webkit-box-shadow: 0px 2px 6px #DEE2E6;
           box-shadow: 0px 2px 6px #DEE2E6;
-  margin-bottom: 38px; }
+  margin-bottom: 38px;
+  border-radius: 4px; }
   @media (max-width: 768px) {
     .card {
       width: calc(50% - 15px); } }
@@ -236,7 +238,8 @@ input, select, option, textarea {
   .cover img {
     -webkit-transition-duration: 0.5s;
          -o-transition-duration: 0.5s;
-            transition-duration: 0.5s; }
+            transition-duration: 0.5s;
+    border-radius: 4px 4px 0px 0px; }
     .cover img:hover {
       -webkit-transform: scale(1.15);
           -ms-transform: scale(1.15);
@@ -250,7 +253,8 @@ input, select, option, textarea {
   font-size: 20px;
   padding: 8px 20px;
   top: -12px;
-  z-index: 1; }
+  z-index: 1;
+  border-radius: 0px 4px 4px 0px; }
 
 .score {
   background: #00807E;
@@ -258,7 +262,8 @@ input, select, option, textarea {
   font-size: 16px;
   padding: 5px 8px;
   bottom: -16px;
-  z-index: 1; }
+  z-index: 1;
+  border-radius: 0px 4px 4px 0px; }
 
 .purchase {
   color: #00807E;
