@@ -163,7 +163,8 @@ input, select, option, textarea {
   width: 255px;
   border: none;
   padding: 8px 12px;
-  border-bottom: 1px solid #00807E; }
+  border-bottom: 1px solid #00807E;
+  resize: none; }
   @media (max-width: 576px) {
     input, select, option, textarea {
       width: 100%; } }
