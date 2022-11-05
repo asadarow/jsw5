@@ -69,6 +69,7 @@ input,select,option,textarea{
     border: none;
     padding: 8px 12px;
     border-bottom: 1px solid $color_primary;
+    resize: none;
     @include MB{
         width: 100%;
     }  
