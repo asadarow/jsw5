@@ -94,8 +94,8 @@ input,select,option,textarea{
 }
 .search-area{
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-around;
     max-width: 920px;
     margin: 0 auto;
     margin-bottom: 52px;
@@ -108,6 +108,10 @@ input,select,option,textarea{
     p{
         color:$color_txgray;
     }
+}
+.chart{
+    width: 250px;
+    height: 200px;
 }
 .result-list{
     display: flex;

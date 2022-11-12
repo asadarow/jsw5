@@ -1,44 +1,62 @@
 let data=[];
+// 搜尋結果
 axios.get('https://raw.githubusercontent.com/hexschool/js-training/main/travelApi.json')
-  .then(function (response) {
-    data=response.data.data;
-    init();
-  });
+.then(function (response) {
+  data=response.data.data;
+  renderCard(data);
+  renderC3(data);
+});
+
 const list=document.querySelector(".result-list");
 const result=document.querySelector(".search-result");
 let resultlength=0;
-// 搜尋結果
-function init(){
-  let str="";
-  let resultstr="";
+// 更新圖表
+function renderC3(data){
+  let newData=[];
+  let totalObj ={};
   data.forEach(function(item){
-    str+=`<li class="card"><div class="cover"><p class="area">${item.area}</p><p class="score">${item.rate}</p><a href="#"><img src=${item.imgUrl} alt="#"></a></div><div class="content"><div class="depiction"><h2>${item.name}</h2><p>${item.description}</p></div><div class="purchase"><p><span class="material-icons">error</span>剩下最後 ${item.group} 組</p><h3><span>TWD</span>$${item.price}</h3></div></div></li>`;
-    list.innerHTML = str;
+    if(totalObj[item.area]==undefined){
+      totalObj[item.area]=1;
+    }else{
+      totalObj[item.area]++;
+    }
   });
-  resultlength=data.length;
-  resultstr+=`本次搜尋共 ${resultlength} 筆資料`
-  result.innerHTML = resultstr;
+  Object.keys(totalObj).forEach(function(item){
+    let ary=[];
+    ary.push(item);
+    ary.push(totalObj[item]);
+    newData.push(ary);
+  })
+  let chart = c3.generate({
+    bindto: '#chart',
+    data: {
+      columns: newData,
+      type:"donut",
+      colors:{
+        "高雄":"#E68618",
+        "台中":"#5151D3",
+        "台北":"#26BFC7"
+      }
+    },
+    donut: {
+      title: "套票地區比重"
+    }
+  });
 };
-
 // 篩選條件
 const filter=document.querySelector(".filter");
-
 filter.addEventListener("click",function(e){
-  let str ="";
-  let resultstr="";
-  resultlength=0;
   data.forEach(function(item){
     if(e.target.value=="全部地區"){
-      str+=`<li class="card"><div class="cover"><p class="area">${item.area}</p><p class="score">${item.rate}</p><a href="#"><img src=${item.imgUrl} alt="#"></a></div><div class="content"><div class="depiction"><h2>${item.name}</h2><p>${item.description}</p></div><div class="purchase"><p><span class="material-icons">error</span>剩下最後 ${item.group} 組</p><h3><span>TWD</span>$${item.price}</h3></div></div></li>`;
-      resultlength=data.length;
+      renderCard(data);
     }else if(e.target.value==item.area){
-      str+=`<li class="card"><div class="cover"><p class="area">${item.area}</p><p class="score">${item.rate}</p><a href="#"><img src=${item.imgUrl} alt="#"></a></div><div class="content"><div class="depiction"><h2>${item.name}</h2><p>${item.description}</p></div><div class="purchase"><p><span class="material-icons">error</span>剩下最後 ${item.group} 組</p><h3><span>TWD</span>$${item.price}</h3></div></div></li>`;
-      resultlength++;
+      let tempData =[];
+      data.forEach(function (item) {
+        if (e.target.value==item.area)tempData.push(item);
+      });
+      renderCard(tempData);
     }
-    list.innerHTML = str;
   })
-  resultstr+=`本次搜尋共 ${resultlength} 筆資料`
-  result.innerHTML = resultstr;
 })
 // 新增資料
 const btn = document.querySelector(".btn");
@@ -51,7 +69,6 @@ const star = document.querySelector("#star");
 const memo = document.querySelector("#memo");
 const addform=document.querySelector(".addform");
 btn.addEventListener("click",function(e){
-  
   if(fname.value.length<1){
     alert("請填寫套票名稱");
   }else if(imgurl.value.length<=1){
@@ -79,12 +96,22 @@ btn.addEventListener("click",function(e){
     data.push(obj);
     resultlength++;
     alert("新增成功!");
-    init();
+    renderCard(data);
+    renderC3(data);
     filter.value="全部地區";
     addform.reset();
   }
 })
-
-
-
+// 渲染卡片
+function renderCard(renderData){
+  let str="";
+  let resultstr="";
+  renderData.forEach(function(item){
+    str+=`<li class="card"><div class="cover"><p class="area">${item.area}</p><p class="score">${item.rate}</p><a href="#"><img src=${item.imgUrl} alt="#"></a></div><div class="content"><div class="depiction"><h2>${item.name}</h2><p>${item.description}</p></div><div class="purchase"><p><span class="material-icons">error</span>剩下最後 ${item.group} 組</p><h3><span>TWD</span>$${item.price}</h3></div></div></li>`;
+    list.innerHTML = str;
+  });
+  resultlength=renderData.length;
+  resultstr+=`本次搜尋共 ${resultlength} 筆資料`
+  result.innerHTML = resultstr;
+}
 
