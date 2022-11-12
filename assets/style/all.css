@@ -188,11 +188,11 @@ input, select, option, textarea {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   max-width: 920px;
   margin: 0 auto;
   margin-bottom: 52px; }
@@ -203,6 +203,10 @@ input, select, option, textarea {
     margin-right: 30px; }
   .search-area p {
     color: #818A91; }
+
+.chart {
+  width: 250px;
+  height: 200px; }
 
 .result-list {
   display: -webkit-box;
